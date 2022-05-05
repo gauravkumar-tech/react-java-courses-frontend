@@ -22,6 +22,7 @@ import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 import PhoneInTalkIcon from '@mui/icons-material/PhoneInTalk';
 import PermPhoneMsgIcon from '@mui/icons-material/PermPhoneMsg';
 import CoPresentIcon from '@mui/icons-material/CoPresent';
+import Tooltip from '@mui/material/Tooltip';
 
 export default function Sidemenu() {
 
@@ -35,6 +36,8 @@ export default function Sidemenu() {
         <Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
             <nav aria-label="main mailbox folders">
             <nav aria-label="secondary mailbox folders">
+           
+            <Tooltip title="Developer Infomation">
             <ListItem disablePadding>
                 <ListItemButton>
                     <ListItemIcon>
@@ -43,9 +46,13 @@ export default function Sidemenu() {
                     <ListItemText primary="Developer Infomation" />
                 </ListItemButton>
             </ListItem>
+            </Tooltip>
+           
             </nav>
+           
             <Divider />
-                <List>
+           
+            <List>
 
                     <ListItem disablePadding>
                         <ListItemButton>

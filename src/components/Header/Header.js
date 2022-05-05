@@ -17,7 +17,9 @@ export default function Header() {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           Courses App
           </Typography>
+          <Tooltip title={localStorage.getItem("user")}>
           <Avatar sx={{ bgcolor: deepOrange[500] }}>{localStorage.getItem("user").charAt(0)}</Avatar>
+          </Tooltip>
           <Tooltip title="Logout">
           <LogoutIcon style={{marginLeft: '10px'}} />
           </Tooltip>
