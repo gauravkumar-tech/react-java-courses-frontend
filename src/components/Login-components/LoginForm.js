@@ -9,10 +9,10 @@ import CardMedia from '@mui/material/CardMedia';
 import { red } from '@mui/material/colors';
 import pic from '../../img/courses.jpg';
 import LoginIcon from '@mui/icons-material/Login';
-import PersonPinIcon from '@mui/icons-material/PersonPin';
 import axios from 'axios';
 import baseURl from '../../constant'
 import { useNavigate } from "react-router-dom";
+import Singup from './Singup'
 
 export default function LoginForm() {
 
@@ -20,7 +20,7 @@ export default function LoginForm() {
 
     useEffect(() => {
         document.title = `Login Page`;
-      });
+    },[]);
 
     const navigate = useNavigate();
 
@@ -31,21 +31,22 @@ export default function LoginForm() {
             userName: e.target[0].value,
             password: e.target[1].value,
         }
-        axios.post( baseURl + 'User/login', //proxy uri
+        axios.post(baseURl + 'User/login', //proxy uri
             {
                 headers: {
                     'Content-Type': 'application/json',
                     'Access-Control-Allow-Origin': '*'
                 },
-                data : data
+                data: data
             }).then(function (response) {
                 SetData(response.data.user);
-                localStorage.setItem("user",response.data.user.userName);
+                localStorage.setItem("user", response.data.user.userName);
+                localStorage.setItem("userID", response.data.user.id);
                 navigate("/dashboard")
             },
-            (error)=>{
-                console.log(error)
-            });
+                (error) => {
+                    console.log(error)
+                });
         e.preventDefault();
     }
 
@@ -65,7 +66,7 @@ export default function LoginForm() {
                             GK
                         </Avatar>
                     }
-                    title="Welcome To React Courses UI !!"
+                    title="Welcome To React Courses App !!"
                     subheader={new Date().toDateString()}
                 />
                 <CardMedia
@@ -98,7 +99,7 @@ export default function LoginForm() {
                     <div style={{ marginTop: '20px' }}>
                         <ButtonGroup>
                             <Button startIcon={<LoginIcon />} variant="contained" type='submit'>Login</Button>
-                            <Button variant="contained" style={{ color: 'white', backgroundColor: '#d500f9' }} endIcon={<PersonPinIcon />}>Sign up</Button>
+                            <Singup />
                         </ButtonGroup>
                     </div>
                 </form>

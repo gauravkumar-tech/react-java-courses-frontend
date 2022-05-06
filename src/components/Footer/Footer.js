@@ -9,7 +9,7 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import Tooltip from '@mui/material/Tooltip';
 import { useNavigate } from "react-router-dom";
 
-export default function Header() {
+export default function Footer() {
   const navigate = useNavigate();
   
   const logout = () =>{
@@ -18,19 +18,11 @@ export default function Header() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar position="static" style={{backgroundColor:'#1A237E'}}>
         <Toolbar>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          Courses App
+         <div style={{textAlign:'center'}}> Courses App @ 2022  || Made By Gaurav</div>
           </Typography>
-          <Tooltip title={localStorage.getItem("user")}>
-          <Avatar sx={{ bgcolor: deepOrange[500] }}>{localStorage.getItem("user").charAt(0)}</Avatar>
-          </Tooltip>
-          <Tooltip title="Logout">
-          <div onClick={logout}>
-          <LogoutIcon style={{marginLeft: '10px'}}  />
-          </div>
-          </Tooltip>
         </Toolbar>
       </AppBar>
     </Box>

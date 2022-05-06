@@ -23,8 +23,24 @@ import PhoneInTalkIcon from '@mui/icons-material/PhoneInTalk';
 import PermPhoneMsgIcon from '@mui/icons-material/PermPhoneMsg';
 import CoPresentIcon from '@mui/icons-material/CoPresent';
 import Tooltip from '@mui/material/Tooltip';
+import { useNavigate } from 'react-router-dom'
 
 export default function Sidemenu() {
+
+    const dashboard = () => {
+        navigate("/dashboard")
+    }
+    const allcourses = () => {
+        navigate("/allCourses")
+    }
+    const addCourses = () => {
+        navigate("/addCourses")
+    }
+    const yourCourses = () => {
+        navigate("/yourCourses")
+    }
+
+    const navigate = useNavigate();
 
     const [open, setOpen] = React.useState(true);
 
@@ -35,98 +51,114 @@ export default function Sidemenu() {
     return (
         <Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
             <nav aria-label="main mailbox folders">
-            <nav aria-label="secondary mailbox folders">
-           
-            <Tooltip title="Developer Infomation">
-            <ListItem disablePadding>
-                <ListItemButton>
-                    <ListItemIcon>
-                        <CoPresentIcon />
-                    </ListItemIcon>
-                    <ListItemText primary="Developer Infomation" />
-                </ListItemButton>
-            </ListItem>
-            </Tooltip>
-           
-            </nav>
-           
-            <Divider />
-           
-            <List>
+                <nav aria-label="secondary mailbox folders">
 
-                    <ListItem disablePadding>
-                        <ListItemButton>
-                            <ListItemIcon>
-                                <InboxIcon />
-                            </ListItemIcon>
-                            <ListItemText primary="All Courses" />
-                        </ListItemButton>
-                    </ListItem>
-
-                    <ListItem disablePadding>
-                        <ListItemButton>
-                            <ListItemIcon>
-                                <DiscountIcon />
-                            </ListItemIcon>
-                            <ListItemText primary="Add Courses" />
-                        </ListItemButton>
-                    </ListItem>
-
-                    <ListItem disablePadding>
-                        <ListItemButton>
-                            <ListItemIcon>
-                                <CreditScoreIcon />
-                            </ListItemIcon>
-                            <ListItemText primary="Your Courses" />
-                        </ListItemButton>
-                    </ListItem>
-
+                    <Tooltip title="Developer Infomation">
+                        <div onClick={dashboard}>
+                            <ListItem disablePadding >
+                                <ListItemButton>
+                                    <ListItemIcon>
+                                        <CoPresentIcon />
+                                    </ListItemIcon>
+                                    <ListItemText primary="Developer Infomation" />
+                                </ListItemButton>
+                            </ListItem>
+                        </div>
+                    </Tooltip>
+                </nav>
+                <Divider />
+                <List>
+                    <Tooltip title="All Courses">
+                        <div onClick={allcourses}>
+                            <ListItem disablePadding>
+                                <ListItemButton>
+                                    <ListItemIcon>
+                                        <InboxIcon />
+                                    </ListItemIcon>
+                                    <ListItemText primary="All Courses" />
+                                </ListItemButton>
+                            </ListItem>
+                        </div>
+                    </Tooltip>
+                    <Tooltip title="Add Corses">
+                        <div onClick={addCourses}>
+                            <ListItem disablePadding>
+                                <ListItemButton>
+                                    <ListItemIcon>
+                                        <DiscountIcon />
+                                    </ListItemIcon>
+                                    <ListItemText primary="Add Courses" />
+                                </ListItemButton>
+                            </ListItem>
+                        </div>
+                    </Tooltip>
+                    <Tooltip title="Your Courses">
+                    <div onClick={yourCourses}>
+                        <ListItem disablePadding>
+                            <ListItemButton>
+                                <ListItemIcon>
+                                    <CreditScoreIcon />
+                                </ListItemIcon>
+                                <ListItemText primary="Your Courses" />
+                            </ListItemButton>
+                        </ListItem>
+                        </div>
+                    </Tooltip>
                 </List>
             </nav>
             <Divider />
 
             <nav aria-label="secondary mailbox folders">
-                <ListItem disablePadding>
-                    <ListItemButton>
-                        <ListItemIcon>
-                            <SettingsAccessibilityIcon />
-                        </ListItemIcon>
-                        <ListItemText primary="Profile" />
-                    </ListItemButton>
-                </ListItem>
+                <Tooltip title="Profile">
+                    <ListItem disablePadding>
+                        <ListItemButton>
+                            <ListItemIcon>
+                                <SettingsAccessibilityIcon />
+                            </ListItemIcon>
+                            <ListItemText primary="Profile" />
+                        </ListItemButton>
+                    </ListItem>
+                </Tooltip>
 
-                <ListItem disablePadding>
-                    <ListItemButton>
-                        <ListItemIcon>
-                            <SettingsIcon />
-                        </ListItemIcon>
-                        <ListItemText primary="Settings" />
-                    </ListItemButton>
-                </ListItem>
+                <Tooltip title="Settings">
+                    <ListItem disablePadding>
+                        <ListItemButton>
+                            <ListItemIcon>
+                                <SettingsIcon />
+                            </ListItemIcon>
+                            <ListItemText primary="Settings" />
+                        </ListItemButton>
+                    </ListItem>
+                </Tooltip>
             </nav>
+
 
             <Divider />
 
 
 
             <nav aria-label="secondary mailbox folders">
-                <ListItem disablePadding>
-                    <ListItemButton>
-                        <ListItemIcon>
-                            <SupportAgentIcon />
-                        </ListItemIcon>
-                        <ListItemText primary="Customer Service" />
-                    </ListItemButton>
-                </ListItem>
+                <Tooltip title="Customer Service">
+                    <ListItem disablePadding>
+                        <ListItemButton>
+                            <ListItemIcon>
+                                <SupportAgentIcon />
+                            </ListItemIcon>
+                            <ListItemText primary="Customer Service" />
+                        </ListItemButton>
+                    </ListItem>
+                </Tooltip>
 
-                <ListItem disablePadding>
-                    <ListItemButton>
-                        <ListItemIcon>
-                            <CurrencyRupeeIcon />
-                        </ListItemIcon>
-                        <ListItemText primary="Help Us" />
-                    </ListItemButton>
-                </ListItem>
+                <Tooltip title="Help us">
+                    <ListItem disablePadding>
+                        <ListItemButton>
+                            <ListItemIcon>
+                                <CurrencyRupeeIcon />
+                            </ListItemIcon>
+                            <ListItemText primary="Help Us" />
+                        </ListItemButton>
+                    </ListItem>
+                </Tooltip>
             </nav>
 
 
