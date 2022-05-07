@@ -68,6 +68,7 @@ export default function YourCourses() {
             {courses.map((m)=>( localStorage.getItem('userID')==m.userID ?
               <YourEnrolledCourse courseDescription={m.courseDescription} courseName={m.courseName} key={m.id} /> :
               ''  ))}
+             {<YourEnrolledCourse courseDescription="This is just a free Course, to get you started in Programming." courseName="Learn C" key="1" />} 
             </div>
           </Container>
           </Card>

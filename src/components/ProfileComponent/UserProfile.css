@@ -1,0 +1,15 @@
+#Normal{
+    visibility: visible;
+}
+
+#Admin{
+    visibility: hidden;
+}
+
+#Normal1{
+    visibility: hidden;
+}
+
+#Admin1{
+    visibility: visible;
+}

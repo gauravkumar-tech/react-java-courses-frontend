@@ -5,6 +5,9 @@ import Dashboard from './components/dashBoard/Dashboard';
 import AllCourses from './components/sidemenuComponents/AllCourses';
 import AddCourse from './components/sidemenuComponents/AddCourse';
 import YourCourses from './components/sidemenuComponents/YourCourses';
+import MainProfile from './components/ProfileComponent/MainProfile';
+import Settings from './components/SettingsComponent/Settings';
+import Helpus from './components/HelpusComponent/Helpus';
 
 function App() {
   return (
@@ -15,6 +18,9 @@ function App() {
       <Route path="/allCourses" element={<AllCourses />} />
       <Route path="/yourCourses" element={<YourCourses />} />
       <Route path="/addCourses" element={<AddCourse />} />
+      <Route path="/profile" element={<MainProfile />} />
+      <Route path="/settings" element={<Settings />} />
+      <Route path="/helpus" element={<Helpus />} />
     </Routes>
   </Router>
 

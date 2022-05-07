@@ -13,6 +13,7 @@ import axios from 'axios';
 import baseURl from '../../constant'
 import { useNavigate } from "react-router-dom";
 import Singup from './Singup'
+import SnackBar from '../snackbar/SnackBar';
 
 export default function LoginForm() {
 
@@ -20,9 +21,20 @@ export default function LoginForm() {
 
     useEffect(() => {
         document.title = `Login Page`;
-    },[]);
+    }, []);
 
     const navigate = useNavigate();
+
+    const showSnackBar = () => {
+        setShowSnackBar1(true);
+        setTimeout(() => {
+            setShowSnackBar1(false);
+        }, 3000)
+    }
+
+    const [resp1, Setresp1] = useState();
+    const [mess, Setmess] = useState();
+    const [showSnackBar1, setShowSnackBar1] = useState(false);
 
     // this is for login for user.
     const handleSubmit = (e) => {
@@ -39,13 +51,28 @@ export default function LoginForm() {
                 },
                 data: data
             }).then(function (response) {
-                SetData(response.data.user);
-                localStorage.setItem("user", response.data.user.userName);
-                localStorage.setItem("userID", response.data.user.id);
-                navigate("/dashboard")
+                if (response.data.UserPresent) {
+                    SetData(response.data.user);
+                    localStorage.setItem("user", response.data.user.userName);
+                    localStorage.setItem("userID", response.data.user.id);
+                    localStorage.setItem("password", response.data.user.password);
+                    localStorage.setItem("userType", response.data.user.userType);
+                    showSnackBar();
+                    Setresp1('success')
+                    Setmess(response.data.message)
+                    setTimeout(()=>{
+                        navigate("/dashboard")
+                    },3000)
+                } else {
+                    showSnackBar();
+                    Setresp1('fail')
+                    Setmess(response.data.message)
+                }
             },
                 (error) => {
                     console.log(error)
+                    Setresp1('fail')
+                    Setmess("Invalid Request!!")
                 });
         e.preventDefault();
     }
@@ -103,6 +130,9 @@ export default function LoginForm() {
                         </ButtonGroup>
                     </div>
                 </form>
+                <div id={showSnackBar1 == true ? 'showAddCourseSnackBar' : 'hideAddCourseSnackBar'}>
+                    <SnackBar response={resp1} message={mess} />
+                </div>
             </Card>
         </Card>
     )

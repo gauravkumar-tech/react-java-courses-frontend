@@ -66,7 +66,7 @@ export default function AllCourses() {
           <Card style={{ height: '96%', width: '97%', margin: '10px', padding: '10px', paddingBottom: '01px' }}>
           <Container>
           <div style={{marginBottom:'50px'}}>
-            {courses.map((m)=>(
+            { courses.map((m)=>(
               <Courses courseDescription={m.courseDescription} courseName={m.courseName} key={m.id} /> ))}
             </div>
           </Container>

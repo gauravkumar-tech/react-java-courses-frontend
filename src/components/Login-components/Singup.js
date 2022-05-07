@@ -17,6 +17,8 @@ import { useNavigate } from "react-router-dom";
 import Snackbar from '@mui/material/Snackbar';
 import Slide from '@mui/material/Slide';
 import GauravAlerts from './GauravAlerts';
+import '../sidemenuComponents/AddCourse.css'
+import SnackBar from '../snackbar/SnackBar';
 
 
 const style = {
@@ -34,9 +36,22 @@ const style = {
 
 function TransitionDown(props) {
     return <Slide {...props} direction="down" />;
-  }
+}
 
 export default function Singup() {
+
+    const showSnackBar = () => {
+        setShowSnackBar1(true);
+        setTimeout(()=>{
+            setShowSnackBar1(false);
+            
+        },3000)
+        
+    }
+
+    const [resp1, Setresp1] = useState();
+    const [mess, Setmess] = useState();
+    const [showSnackBar1 , setShowSnackBar1] = useState(false);
 
     const [data, SetData] = useState([]);
     const [opensnack, setOpensnack] = React.useState(false);
@@ -48,15 +63,15 @@ export default function Singup() {
     const navigate = useNavigate();
 
     const [transition, setTransition] = React.useState(undefined);
-  
+
     const handleClick = (Transition) => () => {
-      setTransition(() => Transition);
-      setOpensnack(true);
+        setTransition(() => Transition);
+        setOpensnack(true);
     };
 
     const handleClosesnack = () => {
         setOpensnack(false);
-      };
+    };
 
     const handleSubmit = (e) => {
         const data = {
@@ -72,10 +87,24 @@ export default function Singup() {
                 },
                 data: data
             }).then(function (response) {
-                handleClose();
+                if(response.data.UserSaved==true){
+                    Setresp1('success')
+                    Setmess(response.data.message)
+                    showSnackBar();
+                    setTimeout(()=>{
+                        handleClose()
+                    },3000)
+                }else{
+                    Setresp1('fail')
+                    Setmess(response.data.message)
+                    showSnackBar();
+                }
             },
                 (error) => {
+                    Setresp1('fail')
+                    Setmess("Request Failed!! Try Again.")
                     console.log(error)
+                    console.log("from login error");
                 });
         e.preventDefault();
     }
@@ -105,35 +134,40 @@ export default function Singup() {
 
                     <Card style={{ marginTop: '5px', padding: '10px' }}>
 
-                    <Container>
-                        <form style={{ textAlign: 'center' }} onSubmit={handleSubmit}>
-                            <div>
-                                <TextField
-                                    id="userName"
-                                    label="User Name"
-                                    helperText="Enter User Name"
-                                    variant="standard"
-                                    style={{ width: '100%', marginTop: "10px" }}
-                                />
-                            </div>
-                            <div>
-                                <TextField
-                                    id="password"
-                                    label="Password"
-                                    helperText="Enter Password"
-                                    variant="standard"
-                                    type="password"
-                                    style={{ width: '100%' }}
-                                />
-                            </div>
-                            <div style={{ marginTop: '20px' }}>
-                                <ButtonGroup>
-                                    <Button startIcon={<AccountCircleIcon />} variant="contained" type='submit'>Sign Up</Button>
-                                </ButtonGroup>
-                            </div>
-                        </form>
+                        <Container>
+                            <form style={{ textAlign: 'center' }} onSubmit={handleSubmit}>
+                                <div>
+                                    <TextField
+                                        id="userName"
+                                        label="User Name"
+                                        helperText="Enter User Name"
+                                        variant="standard"
+                                        style={{ width: '100%', marginTop: "10px" }}
+                                    />
+                                </div>
+                                <div>
+                                    <TextField
+                                        id="password"
+                                        label="Password"
+                                        helperText="Enter Password"
+                                        variant="standard"
+                                        type="password"
+                                        style={{ width: '100%' }}
+                                    />
+                                </div>
+                                <div style={{ marginTop: '20px' }}>
+                                    <ButtonGroup>
+                                        <Button startIcon={<AccountCircleIcon />} variant="contained" type='submit'>Sign Up</Button>
+                                    </ButtonGroup>
+                                </div>
+                            </form>
                         </Container>
                     </Card>
+
+                    <div id={showSnackBar1 == true ? 'showAddCourseSnackBar' : 'hideAddCourseSnackBar'}>
+                        <SnackBar response={resp1} message={mess} />
+                    </div>
+
                 </Box>
             </Modal>
         </div>

@@ -24,6 +24,7 @@ import PermPhoneMsgIcon from '@mui/icons-material/PermPhoneMsg';
 import CoPresentIcon from '@mui/icons-material/CoPresent';
 import Tooltip from '@mui/material/Tooltip';
 import { useNavigate } from 'react-router-dom'
+import LogoutIcon from '@mui/icons-material/Logout';
 
 export default function Sidemenu() {
 
@@ -39,6 +40,19 @@ export default function Sidemenu() {
     const yourCourses = () => {
         navigate("/yourCourses")
     }
+    const profile = () => {
+        navigate("/profile")
+    }
+    const settingPage = () => {
+        navigate("/settings")
+    }
+    const helpus = () => {
+        navigate("/helpus")
+    }
+    const logout = () => {
+        navigate("/")
+    }
+
 
     const navigate = useNavigate();
 
@@ -93,15 +107,15 @@ export default function Sidemenu() {
                         </div>
                     </Tooltip>
                     <Tooltip title="Your Courses">
-                    <div onClick={yourCourses}>
-                        <ListItem disablePadding>
-                            <ListItemButton>
-                                <ListItemIcon>
-                                    <CreditScoreIcon />
-                                </ListItemIcon>
-                                <ListItemText primary="Your Courses" />
-                            </ListItemButton>
-                        </ListItem>
+                        <div onClick={yourCourses}>
+                            <ListItem disablePadding>
+                                <ListItemButton>
+                                    <ListItemIcon>
+                                        <CreditScoreIcon />
+                                    </ListItemIcon>
+                                    <ListItemText primary="Your Courses" />
+                                </ListItemButton>
+                            </ListItem>
                         </div>
                     </Tooltip>
                 </List>
@@ -109,46 +123,38 @@ export default function Sidemenu() {
             <Divider />
 
             <nav aria-label="secondary mailbox folders">
-                <Tooltip title="Profile">
-                    <ListItem disablePadding>
-                        <ListItemButton>
-                            <ListItemIcon>
-                                <SettingsAccessibilityIcon />
-                            </ListItemIcon>
-                            <ListItemText primary="Profile" />
-                        </ListItemButton>
-                    </ListItem>
-                </Tooltip>
+                <div onClick={profile}>
+                    <Tooltip title="Profile">
+                        <ListItem disablePadding>
+                            <ListItemButton>
+                                <ListItemIcon>
+                                    <SettingsAccessibilityIcon />
+                                </ListItemIcon>
+                                <ListItemText primary="Profile" />
+                            </ListItemButton>
+                        </ListItem>
+                    </Tooltip>
+                </div>
 
-                <Tooltip title="Settings">
-                    <ListItem disablePadding>
-                        <ListItemButton>
-                            <ListItemIcon>
-                                <SettingsIcon />
-                            </ListItemIcon>
-                            <ListItemText primary="Settings" />
-                        </ListItemButton>
-                    </ListItem>
-                </Tooltip>
+                <div onClick={settingPage}>
+                    <Tooltip title="Settings">
+                        <ListItem disablePadding>
+                            <ListItemButton>
+                                <ListItemIcon>
+                                    <SettingsIcon />
+                                </ListItemIcon>
+                                <ListItemText primary="Settings" />
+                            </ListItemButton>
+                        </ListItem>
+                    </Tooltip>
+                </div>
             </nav>
-
-
             <Divider />
 
 
 
             <nav aria-label="secondary mailbox folders">
-                <Tooltip title="Customer Service">
-                    <ListItem disablePadding>
-                        <ListItemButton>
-                            <ListItemIcon>
-                                <SupportAgentIcon />
-                            </ListItemIcon>
-                            <ListItemText primary="Customer Service" />
-                        </ListItemButton>
-                    </ListItem>
-                </Tooltip>
-
+            <div onClick={helpus}>
                 <Tooltip title="Help us">
                     <ListItem disablePadding>
                         <ListItemButton>
@@ -159,33 +165,22 @@ export default function Sidemenu() {
                         </ListItemButton>
                     </ListItem>
                 </Tooltip>
+                </div>
+                <div onClick={logout}>
+                <Tooltip title="Log out">
+                    <ListItem disablePadding>
+                        <ListItemButton>
+                            <ListItemIcon>
+                                <LogoutIcon />
+                            </ListItemIcon>
+                            <ListItemText primary="Logout" />
+                        </ListItemButton>
+                    </ListItem>
+                </Tooltip>
+        </div>
             </nav>
 
 
-            <Divider />
-            <ListItemButton onClick={handleClick}>
-                <ListItemIcon>
-                    <PermPhoneMsgIcon />
-                </ListItemIcon>
-                <ListItemText primary="Contact Us" />
-                {open ? <ExpandLess /> : <ExpandMore />}
-            </ListItemButton>
-            <Collapse in={open} timeout="auto" unmountOnExit>
-                <List component="div" disablePadding>
-                    <ListItemButton sx={{ pl: 4 }}>
-                        <ListItemIcon>
-                            <AlternateEmailIcon />
-                        </ListItemIcon>
-                        <ListItemText primary="Email Developer" />
-                    </ListItemButton>
-                    <ListItemButton sx={{ pl: 4 }}>
-                        <ListItemIcon>
-                            <PhoneInTalkIcon />
-                        </ListItemIcon>
-                        <ListItemText primary="Call Developer" />
-                    </ListItemButton>
-                </List>
-            </Collapse>
         </Box>
     )
 }
@@ -205,3 +200,30 @@ export default function Sidemenu() {
     //     </ListItem>
     //   </List>
     // </nav>
+
+
+    
+            // <Divider />
+            // <ListItemButton onClick={handleClick}>
+            //     <ListItemIcon>
+            //         <PermPhoneMsgIcon />
+            //     </ListItemIcon>
+            //     <ListItemText primary="Contact Us" />
+            //     {open ? <ExpandLess /> : <ExpandMore />}
+            // </ListItemButton>
+            // <Collapse in={open} timeout="auto" unmountOnExit>
+            //     <List component="div" disablePadding>
+            //         <ListItemButton sx={{ pl: 4 }}>
+            //             <ListItemIcon>
+            //                 <AlternateEmailIcon />
+            //             </ListItemIcon>
+            //             <ListItemText primary="Email Developer" />
+            //         </ListItemButton>
+            //         <ListItemButton sx={{ pl: 4 }}>
+            //             <ListItemIcon>
+            //                 <PhoneInTalkIcon />
+            //             </ListItemIcon>
+            //             <ListItemText primary="Call Developer" />
+            //         </ListItemButton>
+            //     </List>
+            // </Collapse>
