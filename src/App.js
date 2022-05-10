@@ -8,6 +8,7 @@ import YourCourses from './components/sidemenuComponents/YourCourses';
 import MainProfile from './components/ProfileComponent/MainProfile';
 import Settings from './components/SettingsComponent/Settings';
 import Helpus from './components/HelpusComponent/Helpus';
+import AllUsersDashBoard from './components/allusers/AllUsersDashBoard';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
       <Route path="/profile" element={<MainProfile />} />
       <Route path="/settings" element={<Settings />} />
       <Route path="/helpus" element={<Helpus />} />
+      <Route path="/allusers" element={<AllUsersDashBoard />} />
     </Routes>
   </Router>
 

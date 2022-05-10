@@ -20,7 +20,7 @@ export default function Settings() {
             <Sidemenu />
           </Grid>
           <Grid item xs={9} >
-            <Card style={{ backgroundColor: '#f2e9f3', height: '100%' }}>
+            <Card style={{ backgroundColor: '#f2e9f3', height: '100%', }}>
               <SingleSetting/>
             </Card>
           </Grid>

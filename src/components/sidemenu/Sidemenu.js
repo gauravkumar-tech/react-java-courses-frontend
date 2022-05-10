@@ -52,6 +52,9 @@ export default function Sidemenu() {
     const logout = () => {
         navigate("/")
     }
+    const allusers = () => {
+        navigate("/allusers")
+    }
 
 
     const navigate = useNavigate();
@@ -162,6 +165,18 @@ export default function Sidemenu() {
                                 <CurrencyRupeeIcon />
                             </ListItemIcon>
                             <ListItemText primary="Help Us" />
+                        </ListItemButton>
+                    </ListItem>
+                </Tooltip>
+                </div>
+            <div onClick={allusers}>
+                <Tooltip title="All Users">
+                    <ListItem disablePadding>
+                        <ListItemButton>
+                            <ListItemIcon>
+                                <CurrencyRupeeIcon />
+                            </ListItemIcon>
+                            <ListItemText primary="All Users" />
                         </ListItemButton>
                     </ListItem>
                 </Tooltip>
